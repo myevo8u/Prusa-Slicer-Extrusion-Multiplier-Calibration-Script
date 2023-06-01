@@ -7,6 +7,8 @@ After reading through Ellis 3dp tuning guide on calibrating your extrusion multi
 
 Eventually I was sitting here doing manual modifications to the Gcode to find each object start position and adding a M221 S90 or whatever flow I needed. This also was annoying, so I decided to write a post processing script to automatically calculate the flow percentages based on the defined extrusion multiplier for your current filament profile selected.
 
+This script works for Marlin Firmware
+
 # Latest Release:
 
 [Download Here](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/releases/tag/v1.0)
@@ -19,7 +21,8 @@ Now, say your base extrusion set in the profile was different, like .935 This sc
 
 # Pre-requirements
 
-* This script. (You can use the .exe or python script) 
+* This script. (You can use the .exe or python script)
+* This script works for Marlin Firmware 
 [Download Here](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/releases/tag/v1.0)
 * You must enable the setting "**_Label Objects_**" in Prusa Slicer under **_Print Settings -> Output Options -> Output file_**
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/label-objects.png?raw=true)
