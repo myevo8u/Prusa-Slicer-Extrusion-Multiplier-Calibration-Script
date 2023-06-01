@@ -19,7 +19,7 @@ Now, say your base extrusion set in the profile was different, like .935 This sc
 
 # Pre-requirements
 
-* This script, you can use the .exe or python script
+* This script. (You can use the .exe or python script)
 * You must enable the setting "**_Label Objects_**" in Prusa Slicer under **_Print Settings -> Output Options -> Output file_**
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/label-objects.png?raw=true)
 * You must also use "**_Add an Instance_**" to duplicate your models. The script works by looking for specific keywords and **will NOT work with seperated objects**
