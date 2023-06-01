@@ -42,7 +42,7 @@ Alright, now that you have some things setup. Lets walk through the steps:
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/loadgcode.png?raw=true)
 6. Now we need to tell the script our base extrusion multiplier that is currently set in prusa slicer from step 3, in my case it is 1. We can also see the script found our 4 instances.
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/setbaseem.png?raw=true)
-7. Now we need to define what we would like our extrusion multiplier to be for each instance. The scale can be any percentage in decimal format. (e.g., 100% would be 1, 102% would be 1.2, 98.5% would be .985, etc.)
+7. Now we need to define what we would like our extrusion multiplier to be for each instance. The scale can be any percentage in decimal format. (e.g., 100% would be 1, 102% would be 1.02, 98.5% would be .985, etc.)
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/setmodifiers.png?raw=true)
 8. AND WE ARE DONE! The script will give you an output of the settings and save over the existing file:
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/complete.png?raw=true)
