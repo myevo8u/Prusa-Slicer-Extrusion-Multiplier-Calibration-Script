@@ -9,7 +9,7 @@ Eventually I was sitting here doing manual modifications to the Gcode to find ea
 
 # Latest Release:
 
-[Download Here](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/releases/tag/v1.0))
+[Download Here](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/releases/tag/v1.0)
 
 # Explanation:
 
