@@ -1,24 +1,16 @@
 #################################################################
-# Prusa Extrusion Multiplier Calibration Post Processing Script
+# Prusa Extrusion Multiplier Calibration Post Processing Script (Embedded Version)
 # V1.0
 # Created by: Kevin Pidliskey
 # https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/
 #################################################################
 
-import tkinter as tk
-from tkinter import filedialog
+import sys
 import os
 import re
 
-print("Prusa Extrusion Multiplier Calibration Post Processing Script V1.0")
-input("Press Enter to select a Prusa Slicer GCode Generated File to modify:")
-
-# Create the root window
-root = tk.Tk()
-root.withdraw()
-
-# Display the file dialog for selecting a .gcode file
-file_path = filedialog.askopenfilename(filetypes=[("G-Code Files", "*.gcode")])
+# Get the path for the file from args PrusaSlicer sends
+file_path = sys.argv[1]
 file_name = os.path.basename(file_path)
 
 # Check if a file was selected
@@ -28,10 +20,11 @@ if file_path:
         # Perform operations on the file
         file_content = file.read()
         # Process the file content as needed
-        print(f"G-Code File Loaded: {file_name}\n\n\n\n")
+        print(f"G-Code File Loaded: {file_name}")
 else:
     # No file was selected
-    print("No file selected.")
+    print(f"G-Code file path '{file_path}' is invalid, exiting.")
+    exit
 
 unique_lines = set()  # Set to store unique lines
 
@@ -41,20 +34,20 @@ for line in file_content.split("\n"):
         unique_lines.add(line)
 
 num_models = len(unique_lines)  # Get the unique count of lines
-print(f"Found {num_models} unique models in G-Code\n\n")
+print(f"Found {num_models} unique models in G-Code")
 
 base_extrusion_Multiplier = 0.0
 for l in unique_lines:
     extracted_Multiplier = float(re.search("; printing object EM_Cube-(.*).stl", l).group(1))
     if extracted_Multiplier > base_extrusion_Multiplier:
         base_extrusion_Multiplier = extracted_Multiplier
-print(f"Highest extrusion multiplier found in gcode is: {base_extrusion_Multiplier}")
+print(f"Highest extrusion multiplier found in gcode is: {base_extrusion_Multiplier}\n")
 
 replacementsmade = []
 modified_content = file_content
 for l in unique_lines:
     obj_name = re.search("; printing object (.*) id", l).group(1)
-    print(f"\nModifying Object: {obj_name}")
+    print(f"Modifying Object: {obj_name}")
     # Get the new Extrusion Multiplier for model
     extrusion_Multiplier = float(re.search("; printing object EM_Cube-(.*).stl", l).group(1))
     percentage_remaining = (extrusion_Multiplier / base_extrusion_Multiplier) * 100
@@ -68,7 +61,7 @@ for l in unique_lines:
             modified_content = modified_content.replace(line, modified_line)  # Replace the line in modified_content
             replacementsmade.append(f'Object {obj_name} modified: {replacecount} times | Flow set to: {rounded_percentage}% | Extrusion Multiplier set to: {extrusion_Multiplier}')
             break
-    print(f"G-Code Extrusion Multiplier Modifications for Object {obj_name}: M221 S{rounded_percentage}\n")
+    print(f"G-Code Extrusion Multiplier Modifications for Object {obj_name}: M221 S{rounded_percentage}")
 # Save the modified content back to the file
 with open(file_path, 'w') as file:
     file.write(modified_content)
