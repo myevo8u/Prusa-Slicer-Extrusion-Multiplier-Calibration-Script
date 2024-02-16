@@ -71,7 +71,7 @@ Please note these instructions make the following assumptions:
     * All platforms: [Calibrate-Flow-Embedded.py](https://raw.githubusercontent.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/main/Python/Calibrate-Flow-Embedded.py)
     * Windows: [Calibrate-Flow-Embedded-Wrapper.bat](https://raw.githubusercontent.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/main/Python/Calibrate-Flow-Embedded-Wrapper.bat)
     * macOS/Linux: [Calibrate-Flow-Embedded-Wrapper.sh](https://raw.githubusercontent.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/main/Python/Calibrate-Flow-Embedded-Wrapper.bat)
-        * If on Linux, make sure to run the following to make the wrapper script executable: `chmod u+x Calibrate-Flow-Embedded-Wrapper.sh`
+        * Make sure to run the following to make the wrapper script executable: `chmod u+x Calibrate-Flow-Embedded-Wrapper.sh`
 1. Record the full path to the wrapper script for your platform for later use
 1. Open PrusaSlicer, go to `Print Settings`, and choose whichever the normal 0.20mm profile for your printer is
 1. Change the following settings for the profile to match the print settings recommended by the Ellis3DP tuning guide and integrate this script:
