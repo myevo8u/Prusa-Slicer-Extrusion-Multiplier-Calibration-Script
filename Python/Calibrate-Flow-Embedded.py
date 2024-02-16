@@ -68,5 +68,3 @@ with open(file_path, 'w') as file:
 print(f"********************Modifications Complete*******************************\n")
 for i in replacementsmade:
     print(i)
-
-exit = input("\nPress Enter to Exit: ")

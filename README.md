@@ -25,8 +25,6 @@ Now, say your base extrusion set in the profile was different, like .935 This sc
 * This script works for Marlin Firmware, but can be edited easily to work on klipper by modifying line 75 in the script with approriate gcode. (I think klipper can use M221? DOUBLE CHECK!)
 * You must enable the setting "**_Label Objects_**" in Prusa Slicer under **_Print Settings -> Output Options -> Output file_**
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/label-objects.png?raw=true)
-* You must also use "**_Add an Instance_**" to duplicate your models. The script works by looking for specific keywords and **will NOT work with separated objects**
-![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/instances.png?raw=true)
 
 # Usage
 
@@ -56,3 +54,44 @@ Just to show what the output would look like if we didn't use 1 as the base extr
 ![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/gcodecheck.png?raw=true)
 
 10. That's it, you are ready to print. Hope you find this script useful!
+
+# Usage (PrusaSlicer Embedded with Labeled Cubes)
+
+Alternately, this script can be executed via a PrusaSlicer-embedded workflow when combined with [AndrewEllis93's Labelled Cubes](https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/main/test_prints/extrusion_multiplier_cubes/labeled).
+
+Please note these instructions make the following assumptions:
+
+    * You are using a 0.4mm nozzle
+    * You have Python installed on your machine
+    * Python is in your PATH (i.e. you can run `python` in your terminal and it opens)
+
+1. Go to [https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/5ebf40e8c67c88b959420d83502aa34fcf81567b](https://github.com/AndrewEllis93/Print-Tuning-Guide/tree/5ebf40e8c67c88b959420d83502aa34fcf81567b), click on the green `Code` button, then choose `Download ZIP`
+1. Extract the ZIP, and pull out the folder `test_prints/extrusion_multiplier_cubes/labeled`
+    * The rest of the extracted ZIP can be discarded
+1. Download needed scripts from this repository and save them wherever you like
+    * All platforms: [Calibrate-Flow-Embedded.py](https://raw.githubusercontent.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/main/Python/Calibrate-Flow-Embedded.py)
+    * Windows: [Calibrate-Flow-Embedded-Wrapper.bat](https://raw.githubusercontent.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/main/Python/Calibrate-Flow-Embedded-Wrapper.bat)
+    * macOS/Linux: [Calibrate-Flow-Embedded-Wrapper.sh](https://raw.githubusercontent.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/main/Python/Calibrate-Flow-Embedded-Wrapper.bat)
+        * Make sure to run the following to make the wrapper script executable: `chmod u+x Calibrate-Flow-Embedded-Wrapper.sh`
+1. Record the full path to the wrapper script for your platform for later use
+1. Open PrusaSlicer, go to `Print Settings`, and choose whichever the normal 0.20mm profile for your printer is
+1. Change the following settings for the profile to match the print settings recommended by the Ellis3DP tuning guide and integrate this script:
+    * Layers and perimeters
+        * `Solid layers: Top`: 10
+        * `Solid layers: Bottom`: 2
+    * Infill
+        * `Fill density`: 30%
+        * `Top fill pattern`: Monotonic Lines
+    * Output options
+        * `Label objects`: OctoPrint comments
+        * `Post-processing scripts`: The full path to the wrapper script you recorded earlier
+    * Advanced
+        * `Top solid infill`: 0.4mm
+1. Save the print profile as something like `Calibration - Extrusion Multiplier`
+1. Create a new project using the cubes you downloaded, choosing whichever extrusion multiplier values you wish to test
+1. Note the highest EM value you selected, and set `Filament settings` > `Filament` > `Extrusion multiplier` to match
+    * It is CRITICALLY important not to miss this step, or your calibration test will yield an incorrect value
+1. Slice and export the file
+    * Upon export, the processing script will run and adjust the values for each object
+1. Check the generated GCODE to ensure it has been modified properly. You can do a find for **_Modified by PPScript_** in a text editor to verify M221 has been added properly:
+![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/gcodecheck.png?raw=true)
