@@ -1,3 +1,3 @@
 #! /bin/sh
 
-python Calibrate-Flow-Embedded.py
+python3 Calibrate-Flow-Embedded.py
