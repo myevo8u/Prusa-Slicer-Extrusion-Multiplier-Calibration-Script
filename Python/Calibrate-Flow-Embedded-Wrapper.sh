@@ -1,3 +1,5 @@
-#! /bin/sh
+#! /bin/bash
 
-python3 Calibrate-Flow-Embedded.py
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+python3 "$SCRIPT_DIR/Calibrate-Flow-Embedded.py" "$1"
