@@ -23,7 +23,8 @@ Now, say your base extrusion set in the profile was different, like .935 This sc
 
 * This script. (You can use the .exe or python script) [Download Here](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/releases/tag/v1.0)
 * This script works for Marlin Firmware, but can be edited easily to work on klipper by modifying line 75 in the script with approriate gcode. (I think klipper can use M221? DOUBLE CHECK!)
-![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/instances.png?raw=true)
+* You must enable the setting "**_Label Objects_**" in Prusa Slicer under **_Print Settings -> Output Options -> Output file_**
+![alt text](https://github.com/myevo8u/Prusa-Slicer-Extrusion-Multiplier-Calibration-Script/blob/main/Screenshots/label-objects.png?raw=true)
 
 # Usage
 
